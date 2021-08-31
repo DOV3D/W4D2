@@ -1,0 +1,4 @@
+class KnightKing < Piece
+
+
+end
