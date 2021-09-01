@@ -1,4 +1,3 @@
-require_relative "board"
 
 # sliding pieces: rook/bishop/queen
 # stepable: knight, knight
@@ -14,10 +13,10 @@ class Piece
     @color = color
     @board = board
     @pos = pos
-    
+
   end
 
-  
+
   # def moves
   #   raise "placeholder because we need to draw from subclass moves method"
   # end

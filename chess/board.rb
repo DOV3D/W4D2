@@ -1,5 +1,4 @@
-require_relative "null_piece.rb"
-require_relative "piece.rb"
+require_relative "all_pieces.rb"
 
 class Board
 
@@ -10,10 +9,15 @@ class Board
     @rows = Array.new(8) { Array.new(8, @null_piece) }
 
     arr = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
-    @rows[0].each_with_index do |ele, i|
-      ele = arr[i].new(:black, self, [0, i])
-    end
-    
+
+    # black pieces, top row
+    @rows[0].map!.with_index { |piece, i| piece = arr[i].new(:black, self, [0, i]) }
+    @rows[1].map!.with_index {|piece, i| piece = Pawn.new(:black, self, [1, i])}
+
+    # white pieces, bottom row
+    @rows[7].map!.with_index { |piece, i| piece = arr[i].new(:white, self, [7, i]) }
+    @rows[6].map!.with_index {|piece, i| piece = Pawn.new(:white, self, [6, i])}
+
   end
 
   def [](pos)
