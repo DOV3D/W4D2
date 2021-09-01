@@ -4,14 +4,18 @@ require "singleton"
 
 class NullPiece < Piece
   include Singleton
+
   def initialize
-
-
   end
 
-  # moves
+  def moves
+  end
 
-  # symbol
+  def symbol
+    "_"
+  end
 
+  # need a way to distinguish what color the square of NullPiece is on
+  # maybe draw from Piece parent class ... parent class has color initialize method
 
 end

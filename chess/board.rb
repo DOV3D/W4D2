@@ -6,7 +6,7 @@ class Board
   def initialize
     # setup the board with instances of Piece in locations where actual Pieces will be
     # nil where the NullPiece will start
-    @null_piece = NullPiece.new
+    @null_piece = NullPiece.instance
     @rows = Array.new(8) { Array.new(8, @null_piece) }
 
 
@@ -22,7 +22,7 @@ class Board
     @rows[row][col] = val
   end
 
-
+  # not outputting correct error message for valid_pos check
   def move_piece(start_pos, end_pos)
     #save whats at start_pos to variable so we can assign the variable to end_pos
     #replace start_pos with a null piece
