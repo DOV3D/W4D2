@@ -9,7 +9,11 @@ class Board
     @null_piece = NullPiece.instance
     @rows = Array.new(8) { Array.new(8, @null_piece) }
 
-
+    arr = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
+    @rows[0].each_with_index do |ele, i|
+      ele = arr[i].new(:black, self, [0, i])
+    end
+    
   end
 
   def [](pos)

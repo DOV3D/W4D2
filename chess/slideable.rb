@@ -21,7 +21,11 @@ module Slideable
   def moves
     pos_moves = []
 
+    move_dirs.each do |dx, dy|
+      pos_moves.concat(grow_unblocked_moves_in_dir(dx, dy))
+    end
 
+    pos_moves
   end
 
   private
@@ -33,11 +37,30 @@ module Slideable
 
   def grow_unblocked_moves_in_dir(dx, dy)
     pos_moves = []
+    current_x, current_y = pos
+    
+    checked = false
+    until checked
+      new_x = current_x + dx
+      new_y = current_y + dy
+      pos = [new_x, new_y]
 
+      #need to check if its a valid_pos on the board
+      if board.valid_pos?(pos)
+        if empty?(pos)
+          pos_moves << pos
+        end
+      #need to check if its our piece thats blocking it
+      #need to check if its opponents piece blocking 
+        if board[pos].color != color
+          pos_moves << pos
+          checked = true
+        else
+          checked = true
+        end
+      end
+    end
+    pos_moves
+  end #unblocked_moves end
 
-
-
-  end
-
-
-end
+end #module end

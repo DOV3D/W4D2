@@ -5,13 +5,19 @@ require_relative "board"
 # nullPiece: occupy emtpy space
 # pawn
 
+
 class Piece
+  attr_reader :color, :board
+  attr_accessor :pos
+
   def initialize(color, board, pos)
     @color = color
     @board = board
     @pos = pos
+    
   end
 
+  
   # def moves
   #   raise "placeholder because we need to draw from subclass moves method"
   # end
@@ -19,9 +25,9 @@ class Piece
   def to_s
 
   end
-
-  def empty?
-
+  #Does Piece class need to require board?
+  def empty?(pos)
+    board[pos].is_a?(NullPiece)
   end
 
   def valid_moves
